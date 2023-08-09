@@ -2,7 +2,9 @@ using Application.Hiker;
 using Domain.Hiker;
 using Domain.Hiker.Dtos;
 using Domain.Hiker.Entities;
-
+using Domain.HikerElement;
+using Domain.HikerElement.Dtos;
+using Domain.HikerElement.Entities;
 namespace WebApi.Controllers;
 
 using Microsoft.AspNetCore.Mvc;
@@ -12,11 +14,13 @@ using Microsoft.AspNetCore.Mvc;
 public class HikerController: ControllerBase
 {
     private readonly IHikerProcess _hikerProcess;
+    private readonly IHikerElementProcess _hikerElementProcess;
     private readonly ILogger<HikerController> _logger;
-    public HikerController(ILogger<HikerController> iLogger, IHikerProcess hikerProcess)
+    public HikerController(ILogger<HikerController> iLogger, IHikerProcess hikerProcess, IHikerElementProcess hikerElementProcess)
     {
         _hikerProcess = hikerProcess;
         _logger = iLogger;
+        _hikerElementProcess = hikerElementProcess;
     }
 
     [HttpGet]
@@ -59,5 +63,13 @@ public class HikerController: ControllerBase
     {
         await _hikerProcess.DeleteHikerASync(id);
         return NoContent();
+    }
+
+    [HttpGet(Name = "HelloWorld")]
+    [ProducesResponseType(typeof(Hiker), StatusCodes.Status200OK)]
+    public async Task<IActionResult> CalculateHikerElements()
+    {
+        var data = await _hikerProcess.GetHikersAsync();
+        return Ok("oliwi");
     }
 }

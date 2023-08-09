@@ -65,11 +65,12 @@ public class HikerController: ControllerBase
         return NoContent();
     }
 
-    [HttpGet(Name = "HelloWorld")]
+    [HttpPost("/calculate")]
     [ProducesResponseType(typeof(Hiker), StatusCodes.Status200OK)]
-    public async Task<IActionResult> CalculateHikerElements()
+    //public async Task<IEnumerable<Hiker?>> CalculateHikerElements(CalculateDto calculateDto) => await _hikerProcess.GetHikersAsync();
+    public async Task<IActionResult> CalculateHikerElements(CalculateDto calculateDto)
     {
         var data = await _hikerProcess.GetHikersAsync();
-        return Ok("oliwi");
+        return new JsonResult("esto es una gran prueba");
     }
 }

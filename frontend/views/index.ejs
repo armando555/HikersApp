@@ -44,11 +44,12 @@
 			data: JSON.stringify({'name': $('#name').val(), 'weight': $('#weight').val(), 'calories': $('#calories').val()}) 
 		  }).done((r) => {
 			console.log("oliwi");
+			//console.log(JSON.stringify({'name': $('#name').val(), 'weight': $('#weight').val(), 'calories': $('#calories').val()}));
 			if(r.err) {
 			  if (r.err == 'error') return showAlert(errMsg.error); 
         if (r.err == 'noPosible') return showAlert(errMsg.noPosible); 
 			} 
-			else window.location.href = '/signed';
+			else window.location.href = `/pass?data=${JSON.stringify(r.data)}`;
 		  })
 		}
 	

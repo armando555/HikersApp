@@ -16,16 +16,6 @@ dotnet add package package_name
 # Migrations manage
 ## Notes: don't forget run this command from webApi project and create the database
 
-Create a migration
-```bash
-dotnet ef migrations add --project ../Infrastructure/ migration_name
-```
-
-Run the migration in database
-```bash
-dotnet ef database update -p ../Infrastructure/
-```
-
 Make migration to database
 
 ```sh

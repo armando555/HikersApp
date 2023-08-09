@@ -12,6 +12,7 @@ public static class HikerElementModelBuilder
             i.Property(o=> o.Id).ValueGeneratedOnAdd();
             i.Property(o => o.Calories).IsRequired();
             i.Property(o => o.Weight).IsRequired();
+            i.Property(o => o.Name).HasMaxLength(60).IsRequired();
         });
     }
 }

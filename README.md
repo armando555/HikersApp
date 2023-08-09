@@ -19,7 +19,7 @@ dotnet add package package_name
 Make migration to database
 
 ```sh
-cd src/WebApi && dotnet ef migrations add --project ../Infrastructure/ migration_name
+cd src/WebApi && dotnet ef migrations add --project ../Infrastructure/ third_migration
 ```
 
 Update database

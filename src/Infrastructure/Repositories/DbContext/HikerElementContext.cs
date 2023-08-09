@@ -1,4 +1,5 @@
 using Domain.HikerElement.Entities;
+using Domain.Hiker.Entities;
 using Infrastructure.Repositories.DbContext.ModelBuilders;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -13,10 +14,12 @@ public class HikerElementContext: Microsoft.EntityFrameworkCore.DbContext
     }
 
     public DbSet<HikerElement> HikerElements { get;set; }
+    public DbSet<Hiker> Hiker{ get;set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.MapHikerElement();
+        modelBuilder.MapHiker();
     }
 
 

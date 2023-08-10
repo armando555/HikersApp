@@ -66,11 +66,29 @@ public class HikerController: ControllerBase
     }
 
     [HttpPost("/calculate")]
-    [ProducesResponseType(typeof(Hiker), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
     //public async Task<IEnumerable<Hiker?>> CalculateHikerElements(CalculateDto calculateDto) => await _hikerProcess.GetHikersAsync();
     public async Task<IActionResult> CalculateHikerElements(CalculateDto calculateDto)
     {
-        var data = await _hikerProcess.GetHikersAsync();
-        return new JsonResult("esto es una gran prueba");
+        string answer = "";
+        int countW = 0;
+        int countC = 0;
+        var data = await _hikerElementProcess.GetHikerElementsAsync();
+        if (! (data is null)){
+            foreach(HikerElement hikerElement in data){
+                if (! (hikerElement is null)){
+                    if(countW+hikerElement.Weight <= calculateDto.Weight && (countC+hikerElement.Calories<=calculateDto.Calories || countC+hikerElement.Calories>calculateDto.Calories)){
+                        answer += hikerElement.Name+" ";
+                        countW += hikerElement.Weight;
+                        countC += hikerElement.Calories;
+                        Console.WriteLine("Weight "+countW+ "    Calories "+countC);
+                    }
+                }
+
+            }
+        }
+        Console.WriteLine(answer);
+
+        return new JsonResult(answer);
     }
 }

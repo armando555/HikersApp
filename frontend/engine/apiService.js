@@ -1,8 +1,11 @@
 const fetch = require('node-fetch');
 const { showLog } = require('./helpers');
 const service = {};
-const baseUrl = 'http://localhost:5299/';
 
+// THIS IS THE VARIABLE THE YOU MUST CHANGE IF THE PORT IS DIFFERENT
+//----------------------------------------------------------------------
+const baseUrl = 'http://localhost:5299/';
+//----------------------------------------------------------------------
 
 service.calculate = async(input) => {
   const url = `${baseUrl}calculate`;

@@ -1,19 +1,7 @@
 # HikersApp
 
 this a technical interview for a semi senior position developer
-Usefull commands
-
-This command is for creating a reference between two projects
-
-```bash
-dotnet add reference project_path
-```
-
-This command is for adding new package from nuget repository to the project
-
-```bash
-dotnet add package package_name
-```
+In this case de frontend was made in Express using html, javascript(Ajax), and CSS [VANILA PROJECT] and the Web Api was built in Dotnet 7 using a DDD(Domain driven design) and implementing a endpoint
 
 # Migrations manage
 
@@ -41,4 +29,18 @@ Run the project
 
 ```sh
 cd src/WebApi && dotnet run
+```
+
+# Run the frontend
+
+install dependencies of express
+
+```sh
+cd frontend && npm i
+```
+
+Run the project
+
+```sh
+cd frontend && npm start
 ```

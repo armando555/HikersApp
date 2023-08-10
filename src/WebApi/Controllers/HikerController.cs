@@ -84,8 +84,11 @@ public class HikerController: ControllerBase
                         Console.WriteLine("Weight "+countW+ "    Calories "+countC);
                     }
                 }
-
             }
+            Hiker hiker = new Hiker();
+            hiker.Name = calculateDto.Name;
+            hiker.HikerElements = answer;
+            await _hikerProcess.AddHikerAsync(hiker);
         }
         Console.WriteLine(answer);
 
